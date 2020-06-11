@@ -6,6 +6,12 @@
 \usage{
 blbsigma(fit)
 }
+\arguments{
+\item{fit}{in the parameters}
+}
+\value{
+model with cluster and blb techniques
+}
 \description{
 compute sigma from fit
 }

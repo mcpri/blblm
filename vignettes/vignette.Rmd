@@ -1,0 +1,140 @@
+---
+title: "vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Introduction
+
+This document was used to help those who view this package and give a breif understanding of what this package little bag bootstrap for linear regression is used for and the implementation. Little bag bootstrap sampling method is an estimators for sampling without replacement. In addition, what is also intresting about little boostrap is that it is compatible with parallel computing algorithms. By being campatible with parallet computing it is able to keep the statistical efficiency and still maintain the original bootstrap. How Bag of Little bootstrap for linear regression works is that it is implemented by getting a sample size into m groups, and then samples each group using the multinomial scheme repeated r times. For each subsample, perform the estimation, either the median,mean, confidence interval, or even a linear model.
+
+# Abstract
+
+This vignette is used to help users run the package `blblm`. This package implements the bag of little bootstraps on linear regressions. What this package includes couple of functions for computing the bag of little bootstraps confidence intervals for sigma, linear regression estimators, and predictors, confidence intervals etc.
+
+## Setup 
+
+```{r setup}
+library(blblm)
+```
+
+# blblm Function
+
+This function computes the bootstrap sample without parallelization. Takes in 2 parameters m and B. M is for a sample size into m groups, and then samples each group using the multinomial scheme repeated r times, and B is for the bootstrapping with number with replications. It also takes in another pramater called formula which is for the formula used when for our model and has one more paramerter called data which is refrence to the datset mtcars. 
+
+```{r}
+fit <- blblm(mpg~wt * hp, data = mtcars, m = 3, B = 100)
+coef(fit)
+confint(fit,c("wt", "hp"))
+```
+
+# blblm_par function
+
+Creating the blblm parallel fucntion for Linear regression. This function computes the bootstrap sample with parallelization and it takes in 4 paramters "cl" for clustering, "formula" for the formula we wish to regress the data upon, "m" for a sample size into m groups, and then samples each group using the multinomial scheme repeated r times, and "B" is for the bootstrapping with number with replications.
+```{r}
+library(future)
+fit2 <- blblm_par(mpg~wt * hp, data = mtcars, m = 3, B = 100,cl = 3)
+coef(fit2)
+confint(fit2,c("wt", "hp"))
+```
+
+
+# split_data function 
+
+This split data function looks into m parts of approximated equal sizes. So we are going to be spliting the data to m samples sizes. Has 2 parameters m a integer and data part of the dataframe.
+
+```
+split_data(data, m)
+```
+
+#blblm_glm Function
+Creating the blblm fucntion for Linear regression with a glm model. It has 5 paramters "parallel" a boolean value, "formula" for the formula we wish to regress the data upon, n is a numeric value and "B" is for the bootstrapping with number with replications.
+```
+glm(formula, data, n, B, parallel = FALSE)
+
+```
+
+# Compute the Estimates function
+
+This function is used for computing the regression estimates. It has 4 parameters "formula" The formula that we wish to regress the data upon, "m" for a sample size into m groups, and then samples each group using the multinomial scheme repeated r times, and "B" is for the bootstrapping with number with replications.
+
+
+# lm_each_boot Function 
+
+This function is able to compute the regression estimates for a blb dataset.It takes it 3 paramters "formula", "data", and "n". It freq is called by doing a multinomial scheme when calling and does a lm1 for a Linear model, function can be used to create a simple regression model for parameters freq, data, and formula. 
+
+```
+lm_each_boot(formula, data, n)
+
+```
+
+# lm1 Function
+
+This function  is able to estimate the regression estimates based on given the number of repetitions. In addition, it drop the original closure of formula, otherwise the formula will pick a wront variable from the global scope. So  after this we have a lm1 for a Linear model, function can be used to create a simple regression model for parameters freq, data, and formula. We also have a line of code which calls for a list of coefficent of fit and sigma for fit.
+
+```
+glm1(formula, data, freqs)
+```
+
+# blbcoef function
+
+This is a fucntion which compute the coefficients from fit.
+```
+blbcoef(fit)
+```
+
+# blbsigma Function
+
+This function compute sigma from fit.
+```
+blbsigma(fit)
+```
+
+# print.blblm Function
+
+This function just prints our blblm model.
+```
+print.blblm (x, ...) 
+```
+
+
+# Sigma.blblm function
+
+This function computes the boothstrap coefficient. It has 3 paramters, object, confidence, and Level for the confidence interval.The print the model called, coefficient estimates, sigma estimate, and size of subsamples and bootstraps used here.
+```
+sigma.blblm(object, confidence = FALSE, level = 0.95, ...)
+```
+
+# coef.blblm  function
+
+This function computes the boothstrap coefficient. We have 1 prameter called object.
+```
+coed.blblm(object, ...)
+```
+
+#confint blblm 
+
+This function computes the boothstrap confidence Interval. It has 4 paramters object, pram is null, level which is set by default for to 0.95 for users. 
+```
+confint.blblm(object, parm = NULL, level = 0.95, ...)
+```
+
+# predict.blblm function
+
+This function computes the boothstrap Prediction for a linear model. It has 4 paramters  object, new_data, Confidence, level. We allow user to choose confidence level, default is 0.95.
+```
+predict.blblm(object, new_data, confidence = FALSE, level = 0.95, ...) 
+```
+
+

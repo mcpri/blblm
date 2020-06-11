@@ -6,6 +6,16 @@
 \usage{
 lm1(formula, data, freqs)
 }
+\arguments{
+\item{formula}{in the model}
+
+\item{data}{part of the parameters}
+
+\item{freqs}{part of the paramters}
+}
+\value{
+model with cluster and blb techniques
+}
 \description{
 estimate the regression estimates based on given the number of repetitions
 }

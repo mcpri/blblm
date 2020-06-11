@@ -6,6 +6,18 @@
 \usage{
 lm_each_subsample(formula, data, n, B)
 }
+\arguments{
+\item{formula}{in the model}
+
+\item{data}{the data for part of the paramters}
+
+\item{n}{subsample numeric number}
+
+\item{B}{number for bootstrap}
+}
+\value{
+model with cluster and blb techniques
+}
 \description{
 compute the estimates
 }

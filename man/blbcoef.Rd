@@ -6,6 +6,12 @@
 \usage{
 blbcoef(fit)
 }
+\arguments{
+\item{fit}{in the parameters}
+}
+\value{
+model with cluster
+}
 \description{
 compute the coefficients from fit
 }

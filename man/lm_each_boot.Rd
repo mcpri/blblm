@@ -6,6 +6,16 @@
 \usage{
 lm_each_boot(formula, data, n)
 }
+\arguments{
+\item{formula}{in the model}
+
+\item{data}{parnt of the paramters}
+
+\item{n}{subsample number}
+}
+\value{
+model with cluster and blb techniques
+}
 \description{
 compute the regression estimates for a blb dataset
 }

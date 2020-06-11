@@ -2,12 +2,14 @@
 % Please edit documentation in R/blblm.R
 \docType{package}
 \name{blblm-package}
-\alias{blblm}
-\alias{blblm-package}
-\title{blblm: What the Package Does (Title Case)}
+\title{blblm: Some bootstrap and Linear Regression}
 \description{
-More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+This package is able to find Linear Regression estimates and uses a Little Bag of Bootstrap.
+    The sampling method is applied to the linear regression model, and is able to predictions, coeff, and confident intervals.
+    What Little bag of Bootstrap means is that procedure which incorporates features of both the bootstrap and subsampling to yield a robust, 
+    computationally efficient meansby the assessing the quality of estimators. Little Bag of Bootstrap is mostly used when doing modern parallel 
+    and distributed computing architectures and furthermore retains the generic applicability and statistical efficiency of the bootstrap. Also 
+    Linear regression is used in this package as well and it is used for finding linear relationship between target and one or more predictors.
 }
 \details{
 Linear Regression with Little Bag of Bootstraps

@@ -6,6 +6,14 @@
 \usage{
 split_data(data, m)
 }
+\arguments{
+\item{data}{part of the dataframe}
+
+\item{m}{a integer}
+}
+\value{
+model with cluster and blb techniques
+}
 \description{
 split data into m parts of approximated equal sizes
 }

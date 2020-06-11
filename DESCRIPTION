@@ -1,18 +1,26 @@
 Package: blblm
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Some bootstrap and Linear Regression 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: person("Prithika", "Rajendran", email = "ptrajendran@ucdavis.edu", role = c("aut", "cre"))
+Maintainer: The package maintainer <ptrajendran@ucdavis.edu>
+Description: This package is able to find Linear Regression estimates and uses a Little Bag of Bootstrap.
+    The sampling method is applied to the linear regression model, and is able to predictions, coeff, and confident intervals.
+    What Little bag of Bootstrap means is that procedure which incorporates features of both the bootstrap and subsampling to yield a robust, 
+    computationally efficient meansby the assessing the quality of estimators. Little Bag of Bootstrap is mostly used when doing modern parallel 
+    and distributed computing architectures and furthermore retains the generic applicability and statistical efficiency of the bootstrap. Also 
+    Linear regression is used in this package as well and it is used for finding linear relationship between target and one or more predictors. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
 Imports: 
     purrr,
+    furrr,
     magrittr
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
+VignetteBuilder: knitr
